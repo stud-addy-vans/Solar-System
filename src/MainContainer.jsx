@@ -1,9 +1,8 @@
 import { useHelper } from "@react-three/drei"
 import AnimatedStars from "./AnimatedStars"
-import { OrbitControls } from "@react-three/drei"
 import { useRef } from "react"
-import Earth from "./Earth"
 import * as THREE from 'three'
+import Earth from "./scenes/earth/Earth"
 
 const MainContainer = () => {
     const directionalLightRef = useRef()
@@ -13,15 +12,14 @@ const MainContainer = () => {
     return (
         <>
             <color attach='background' args={['black']} />
-            <OrbitControls />
             <AnimatedStars />
-            {/* <directionalLight
+            {/* <directionalLight castShadow
                 ref={directionalLightRef}
                 position={[0, 0, 10]}
                 intensity={1}
                 color={0xff0000}
             />
-            <directionalLight ref={directionalLightRefTwo} position={[0, 0, -10]}/> */}
+            <directionalLight castShadow ref={directionalLightRefTwo} position={[0, 0, -10]}/> */}
             <ambientLight />
             
             <Earth displacementScale={0.1}/>
