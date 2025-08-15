@@ -3,14 +3,27 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 
 const AnimatedStars = () => {
-    const starRef = useRef()
+  const starsRef = useRef();
 
-    useFrame(() => {
-        starRef.current.rotation.x += 0.0001
-        starRef.current.rotation.y += 0.0001
-        starRef.current.rotation.z += 0.0001
-    })
-    return <Stars ref={starRef} />
-}
+  useFrame(() => {
+    if (starsRef.current) {
+      starsRef.current.rotation.y += 0.0002;
+      starsRef.current.rotation.x += 0.00005;
+    }
+  });
 
-export default AnimatedStars
+  return (
+    <Stars
+      ref={starsRef}
+      radius={100}        // How far the stars spread
+      depth={50}          // Star depth
+      count={10000}       // How many stars
+      factor={4}          // Star size factor
+      saturation={0}
+      fade
+      speed={1}
+    />
+  );
+};
+
+export default AnimatedStars;
